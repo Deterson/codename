@@ -20,3 +20,27 @@ int Game::play_word(grid::Position p, Color c) // -1: error, 0: all good / 1: st
         return
 }
 
+grid::Position Game::find_word(const std::string& word)
+{
+    for (int i = 0; i < WIDTH; i++)
+    {
+        for (int j = 0; j < WIDTH; j++)
+        {
+            if (word == grid_.get(i, j).getWord())
+                return grid::Position(i, j);
+        }
+    }
+
+    return grid::Position(-1, -1);
+}
+
+int Game::finished()
+{
+    if (grid_.count(Color::BLUE) == 0)
+        return 1;
+    if (grid_.count(Color::RED) == 0)
+        return -1;
+    return 0;
+}
+
+
