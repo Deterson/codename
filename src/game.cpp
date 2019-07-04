@@ -70,80 +70,31 @@ int Game::loop(int plr)
 
     while (finished() == 0)
     {
-        std::cout << "C'est à " << getPlayers().at(curplr) << " de jouer" << std::endl;
+        std::cout << "C'est à " << getPlayers().at(curplr - 1) << " de jouer\n" << std::endl;
+
+        int res = 0;
+        if (plr == curplr)
+            res = play::espion(*this, player_color(curplr));
+        else if (plr == other_team(curplr))
+            res = play::maitre_espion(*this, player_color(curplr));
+        else
+            res = play::other_team(*this, player_color(curplr));
+
+        if (res != 0)
+            return res; // 1 si bleu, -1 si rouge
 
         switch(curplr)
         {
             case 1:
-                if (plr == 1)
-                {
-                    if (play::espion(*this, Color::BLUE) == 2)
-                        return 2;
-                }
-                else if (plr == 2)
-                {
-                    if (play::maitre_espion(*this, Color::BLUE) == 2)
-                        return 2;
-                }
-                else
-                {
-                    if (play::other_team(*this, Color::BLUE) == 2)
-                        return 2;
-                }
                 curplr = 3;
                 break;
             case 2:
-                if (plr == 2)
-                {
-                    if (play::espion(*this, Color::BLUE) == 2)
-                        return 2;
-                }
-                else if (plr == 1)
-                {
-                    if (play::maitre_espion(*this, Color::BLUE) == 2)
-                        return 2;
-                }
-                else
-                {
-                    if (play::other_team(*this, Color::BLUE) == 2)
-                        return 2;
-                }
                 curplr = 4;
                 break;
             case 3:
-                if (plr == 3)
-                {
-                    if (play::espion(*this, Color::RED) == 2)
-                        return 0;
-                }
-                else if (plr == 4)
-                {
-                    if (play::maitre_espion(*this, Color::RED) == 2)
-                        return 0;
-                }
-                else
-                {
-                    if (play::other_team(*this, Color::RED) == 2)
-                        return 0;
-                }
                 curplr = 2;
                 break;
             case 4:
-                if (plr == 4)
-                {
-                    if (play::espion(*this, Color::RED) == 2)
-                        return 0;
-                }
-                else if (plr == 2)
-                {
-                    if (play::maitre_espion(*this, Color::RED) == 2)
-                        return 0;
-                }
-                else
-                {
-                    if (play::other_team(*this, Color::RED) == 2)
-                        return 0;
-                }
                 curplr = 1;
                 break;
         }
