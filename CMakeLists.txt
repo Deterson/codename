@@ -12,4 +12,4 @@ add_executable(codename src/main.cpp
                         src/word.cpp
                         src/dico.cpp
                         src/game.cpp
-                        src/tools.cpp includes/position.hh)
+                        src/tools.cpp includes/position.hh src/color.cpp)
