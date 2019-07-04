@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 project(codename)
 
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -std=c++17 -pedantic")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -std=c++17 -pedantic")
 
 include_directories(includes)
 
@@ -12,4 +12,4 @@ add_executable(codename src/main.cpp
                         src/word.cpp
                         src/dico.cpp
                         src/game.cpp
-                        src/tools.cpp)
+                        src/tools.cpp src/position.cpp includes/position.hh)
