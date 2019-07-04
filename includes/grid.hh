@@ -13,11 +13,11 @@ namespace grid
     {
     private:
         std::array<Word, 25> words_;
-
-
     public:
         Grid();
 
-        Word get(int x, int y);
+        Word get(int x, int y) const;
+        const std::array<Word, 25> &getWords() const;
+
     };
 }
