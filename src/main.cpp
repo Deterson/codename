@@ -9,7 +9,7 @@ int main()
               " (1 et 2, bleus, jouent contre 3 et 4, rouge)" <<
               std::endl;
 
-    std::cin >> temp;
+    getline(std::cin, temp);
 
     int plr = -1;
     plr = atoi(temp.c_str());
@@ -26,14 +26,20 @@ int main()
 
     std::string winner_name;
 
-    if (winner / 2 == 0)
+    if (winner == 1)
+    {
+        winner = 0;
         winner_name = "BLEUS";
+    }
     else
+    {
+        winner = 2;
         winner_name = "ROUGES";
+    }
 
     std::cout << "les " << winner_name << " ont gagné la partie! Bravo à " <<
-              game.getPlayers()[(winner / 2) * 2] << " et à "<<
-              game.getPlayers()[(winner / 2) * 2 + 1] << "." << std::endl;
+              game.getPlayers()[winner] << " et à "<<
+              game.getPlayers()[winner + 1] << "." << std::endl;
 
     return 0;
 }
