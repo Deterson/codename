@@ -6,6 +6,7 @@
 #include "word.hh"
 
 #define WIDTH 5
+#define N_WORDS 8
 
 namespace grid
 {

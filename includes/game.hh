@@ -16,11 +16,12 @@ public:
     Game(std::string p1, std::string p2, std::string p3, std::string p4, int player);
     explicit Game(int player);
 
-    int play_word(grid::Position p, Color c);
     grid::Position find_word(const std::string& word);
+    Color play_word(grid::Position p);
 
     int finished();
 
+    int loop(int plr);
 
     const std::array<std::string, 4> &getPlayers() const;
 };

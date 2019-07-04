@@ -69,7 +69,7 @@ bool Word::isFlipped() const
     return flipped_;
 }
 
-void Word::setFlipped()
+void Word::flip()
 {
     flipped_ = true;
 }

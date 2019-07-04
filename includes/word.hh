@@ -27,7 +27,7 @@ public:
     Color getColor() const;
     bool isFlipped() const;
 
-    void setFlipped();
+    void flip();
 
     static std::array<Word, 25> random_words();
 };
