@@ -3,24 +3,24 @@
 
 Color other_team(Color c)
 {
-if (c == Color::RED)
-return Color::BLUE;
-return Color::RED;
+    if (c == Color::RED)
+        return Color::BLUE;
+    return Color::RED;
 }
 
 std::string print_color(Color c)
 {
-switch(c)
-{
-case Color::BLUE:
-return "Ce mot est BLEU.";
-case Color::RED:
-return "Ce mot est ROUGE.";
-case Color::NEUTRAL:
-return "Ce mot est NEUTRE.";
-case Color::BLACK:
-return "Ce mot est NOIR. Pas de chance :/";
-default:
-return "NOT IMPLEMENTED";
-}
+    switch(c)
+    {
+        case Color::BLUE:
+            return "Ce mot est BLEU.";
+        case Color::RED:
+            return "Ce mot est ROUGE.";
+        case Color::NEUTRAL:
+            return "Ce mot est NEUTRE.";
+        case Color::BLACK:
+            return "Ce mot est NOIR. Pas de chance :/";
+        default:
+            return "NOT IMPLEMENTED";
+    }
 }
