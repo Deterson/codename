@@ -20,8 +20,6 @@ case Color::NEUTRAL:
 return "Ce mot est NEUTRE.";
 case Color::BLACK:
 return "Ce mot est NOIR. Pas de chance :/";
-case Color::FLIPPED:
-return "Ce mot a déjà été deviné.";
 default:
 return "NOT IMPLEMENTED";
 }

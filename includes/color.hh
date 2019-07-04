@@ -7,8 +7,7 @@ enum class Color
     BLUE = 0,
     RED = 1,
     NEUTRAL = 2,
-    BLACK = 3,
-    FLIPPED = 4
+    BLACK = 3
 };
 
 Color other_team(Color c);

@@ -17,7 +17,7 @@ public:
     explicit Game(int player);
 
     grid::Position find_word(const std::string& word);
-    Color play_word(grid::Position p);
+    int play_word(grid::Position p, Color c);
 
     int finished();
 
