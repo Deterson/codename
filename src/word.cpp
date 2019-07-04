@@ -53,3 +53,23 @@ std::array<Word, 25> Word::random_words()
     //pas oublier de random les couleurs
     return ret;
 }
+
+const std::string &Word::getWord() const
+{
+    return word_;
+}
+
+Color Word::getColor() const
+{
+    return color_;
+}
+
+bool Word::isFlipped() const
+{
+    return flipped_;
+}
+
+void Word::setFlipped()
+{
+    flipped_ = true;
+}
