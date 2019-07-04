@@ -27,7 +27,11 @@ grid::Position Game::find_word(const std::string& word)
         for (int j = 0; j < WIDTH; j++)
         {
             if (word == grid_.get(i, j).getWord())
+            {
+                if (grid_.get(i, j).isFlipped())
+                    return grid::Position(-2, -2);
                 return grid::Position(i, j);
+            }
         }
     }
 
