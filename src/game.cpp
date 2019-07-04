@@ -11,7 +11,7 @@ Game::Game(std::string p1, std::string p2, std::string p3, std::string p4, int p
 Game::Game(int player) : Game("player1", "player2", "player3", "player4", player)
 {}
 
-int Game::play_word(grid::Position p, Color c) // -1: error, 0: all good / 1: stop / 2: dead
+int Game::play_word(grid::Position p, Color c) // 0: all good / 1: stop / 2: dead
 {
     Word w = grid_.get(p.x, p.y);
     if (w.isFlipped())
@@ -41,6 +41,11 @@ int Game::finished()
     if (grid_.count(Color::RED) == 0)
         return -1;
     return 0;
+}
+
+const std::array<std::string, 4> &Game::getPlayers() const
+{
+    return players_;
 }
 
 

@@ -21,4 +21,6 @@ public:
 
     int finished();
 
+
+    const std::array<std::string, 4> &getPlayers() const;
 };
