@@ -17,4 +17,15 @@ namespace grid
     {
         return words_;
     }
+
+    int Grid::count(Color c)
+    {
+        int ret = 0;
+        for (const Word& w : words_)
+        {
+            if (w.getColor() == c && !(w.isFlipped()))
+                ret++;
+        }
+        return ret;
+    }
 }

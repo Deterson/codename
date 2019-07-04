@@ -19,5 +19,6 @@ namespace grid
         Word get(int x, int y) const;
         const std::array<Word, 25> &getWords() const;
 
+        int count(Color c);
     };
 }
