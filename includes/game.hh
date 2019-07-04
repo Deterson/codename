@@ -2,6 +2,8 @@
 
 #include <array>
 #include <utility>
+#include <iostream>
+#include "play.hh"
 #include "grid.hh"
 #include "position.hh"
 
@@ -22,6 +24,8 @@ public:
     int finished();
 
     int loop(int plr);
+
+    grid::Grid &getGrid();
 
     const std::array<std::string, 4> &getPlayers() const;
 };
