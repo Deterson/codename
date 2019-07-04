@@ -13,3 +13,18 @@ int line_count(const std::string& filename)
 
     return ret;
 }
+
+int other_team(int player)
+{
+    if (player < 3)
+        return 3 - player;
+
+    return 7 - player;
+}
+
+Color player_color(int player)
+{
+    if (player == 1 || player == 2)
+        return Color::BLUE;
+    return Color::RED;
+}
