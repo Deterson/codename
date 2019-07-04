@@ -1,5 +1,7 @@
 #pragma once
 
+#include <fstream>
+#include <algorithm>
 #include <string>
 
-int count_lines(std::string filename);
+int line_count(const std::string& filename);

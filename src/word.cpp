@@ -41,7 +41,7 @@ std::array<Word, 25> Word::random_words()
     int line_number = 0;
     while (std::getline(file, line))
     {
-        for (int i = 0; i < 25; ++i)
+        for (int i = 0; i < 25; i++)
         {
             if (line_number == line_indices[i])
             {
