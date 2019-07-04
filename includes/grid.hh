@@ -3,13 +3,21 @@
 #include <array>
 #include "word.hh"
 #include "color.hh"
+#include "word.hh"
 
-class Grid
+#define WIDTH 5
+
+namespace grid
 {
-private:
-    std::array<Word, 25> grid_;
+    class Grid
+    {
+    private:
+        std::array<Word, 25> words_;
 
 
-public:
-    Grid();
-};
+    public:
+        Grid();
+
+        Word get(int x, int y);
+    };
+}
