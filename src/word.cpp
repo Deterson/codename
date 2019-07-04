@@ -1,5 +1,5 @@
 #include "word.hh"
-
+#include "grid.hh"
 
 Word::Word(std::string word, Color color)
 {
@@ -20,6 +20,7 @@ std::array<Word, 25> Word::random_words()
 {
     std::array<Word, 25> ret;
     int number_of_lines = line_count("dico");
+    assert(number_of_lines >= 25);
 
     // a vector to hold all the indices: 0 to number_of_lines
     std::vector<int> line_indices(number_of_lines);
@@ -29,11 +30,24 @@ std::array<Word, 25> Word::random_words()
     std::random_device r;
     std::seed_seq seed{r(), r(), r(), r(), r(), r(), r(), r()};
     std::mt19937 eng(seed);
+    std::seed_seq seed2{r(), r(), r(), r(), r(), r(), r(), r()};
+    std::mt19937 eng2(seed2);
 
     // shuffle the line_indices:
     std::shuffle(begin(line_indices), end(line_indices), eng);
 
-    assert(number_of_lines >= 25);
+    std::array<Color, 25> colors{};
+    int i = 0;
+    for (; i < N_WORDS + 1; i++)
+        colors.at(i) = Color::BLUE;
+    for (; i < N_WORDS * 2 + 1; i++)
+        colors.at(i) = Color::RED;
+    for (; i < WIDTH * WIDTH - 1; i++)
+        colors.at(i) = Color::NEUTRAL;
+    colors.at(WIDTH * WIDTH - 1) = Color::BLACK;
+
+    std::shuffle(begin(colors), end(colors), eng2);
+
 
     std::string line;
     std::ifstream file("dico");
@@ -41,16 +55,14 @@ std::array<Word, 25> Word::random_words()
     int line_number = 0;
     while (std::getline(file, line))
     {
-        for (int i = 0; i < 25; i++)
+        for (int j = 0; j < 25; j++)
         {
-            if (line_number == line_indices[i])
-            {
-                ret.at(i) = Word(line, Color::NEUTRAL); //trouver la vraie fonction
-            }
+            if (line_number == line_indices[j])
+                ret.at(j) = Word(line, colors[line_number]);
         }
         ++line_number;
     }
-    //pas oublier de random les couleurs
+
     return ret;
 }
 
