@@ -57,8 +57,4 @@ namespace grid
 
         std::cout << std::endl << std::endl << std::endl;
     }
-
-    Grid::Grid() : Grid("lol")
-    {
-    }
 }

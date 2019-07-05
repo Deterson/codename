@@ -22,7 +22,7 @@ private:
 
 public:
     Game(std::string p1, std::string p2, std::string p3, std::string p4, int player, const std::string& seed_str);
-    explicit Game(int player, const std::string& seed_str);
+    Game(int player, const std::string& seed_str);
 
     grid::Position find_word(const std::string& word);
     int play_word(grid::Position p, Color c);
