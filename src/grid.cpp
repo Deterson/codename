@@ -1,5 +1,6 @@
 #include <iomanip>
 #include <iostream>
+#include "print.hh"
 #include "grid.hh"
 
 namespace grid
@@ -33,13 +34,27 @@ namespace grid
 
     void Grid::print(bool colors)
     {
+        std::cout << std::endl;
+        int padding = 15;
+
+        for (int i = 0; i < WIDTH * (padding + 1) + 1; i++)
+            std::cout << "-";
+
+        std::cout << std::endl;
+
         for (int i = 0; i < WIDTH; i++)
         {
             for (int j = WIDTH - 1; j >= 0; j--)
             {
-                std::cout << std::setw (10) << get(i, j).getWord() << "  ";
+                std::cout << "|" << print::print_centered(get(i, j).getWord(), padding);
             }
+
+            std::cout << "|" << std::endl;
+            for (int i = 0; i < WIDTH * (padding + 1) + 1; i++)
+                std::cout << "-";
             std::cout << std::endl;
         }
+
+        std::cout << std::endl << std::endl << std::endl;
     }
 }
