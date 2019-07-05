@@ -1,7 +1,7 @@
 #include <iostream>
 #include <game.hh>
 
-int choose_plr(std::string basicString);
+int choose_plr(const std::string& basicString);
 
 std::string get_seed()
 {
@@ -61,7 +61,7 @@ void print_winner(const Game& game, int winner)
 }
 
 
-int choose_plr(std::string seed_str)
+int choose_plr(const std::string& seed_str)
 {
     std::hash<std::string> hasher;
     auto hashed = hasher(seed_str);
