@@ -23,7 +23,7 @@ std::array<Word, 25> Word::random_words(const std::string& seed_str)
     assert(number_of_lines >= 25);
 
     // a vector to hold all the indices: 0 to number_of_lines
-    std::vector<int> line_indices(number_of_lines);
+    std::vector<int> line_indices(25);
     std::iota(begin(line_indices), end(line_indices), 0); // init line_indices
 
     std::random_device r;
