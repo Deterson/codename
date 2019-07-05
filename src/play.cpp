@@ -8,9 +8,17 @@ namespace play
         int to_find = -1;
         while (to_find < 0 || to_find > game.getGrid().count(c))
         {
+input2:
             std::cout << "Combien de mots à trouver vous a indiqué votre coéquipier?\n";
             getline(std::cin, temp);
-            to_find = atoi(temp.c_str());
+            try
+            {
+                to_find = std::stoi(temp);
+            }
+            catch(std::exception&)
+            {
+                goto input2;
+            }
         }
 
 
