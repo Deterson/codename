@@ -13,13 +13,13 @@ namespace print
             switch (word.getColor())
             {
                 case Color::BLUE:
-                    return "\033[;34m" + str + "\033[0m";
+                    return "\033[;94m" + str + "\033[0m";
                 case Color::RED:
                     return "\033[;31m" + str + "\033[0m";
                 case Color::NEUTRAL:
                     return str;
                 case Color::BLACK:
-                    return "\033[1;40m\033[;97m" + str + "\033[0m";
+                    return "\033[7;37m" + str + "\033[0m";
             }
         }
         return str;
