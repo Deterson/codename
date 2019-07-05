@@ -14,12 +14,23 @@ int line_count(const std::string& filename)
     return ret;
 }
 
-int other_team(int player)
+int is_espion(int player)
 {
-    if (player < 3)
-        return 3 - player;
+    return player == E_RED || player == E_BLUE;
+}
 
-    return 7 - player;
+int is_maitre_espion(int player)
+{
+    return player == ME_BLUE || player == ME_RED;
+}
+
+int same_team(int p1, int p2)
+{
+    p1--;
+    p2--;
+    p1 /= 2;
+    p2 /= 2;
+    return p1 == p2;
 }
 
 Color player_color(int player)

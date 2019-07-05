@@ -7,6 +7,12 @@
 #include "grid.hh"
 #include "position.hh"
 
+#define E_BLUE 1
+#define ME_BLUE 2
+#define E_RED 3
+#define ME_RED 4
+
+
 class Game
 {
 private:
