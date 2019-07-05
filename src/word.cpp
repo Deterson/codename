@@ -23,7 +23,7 @@ std::array<Word, 25> Word::random_words(const std::string& seed_str, int plr_sta
     assert(number_of_lines >= 25);
 
     // a vector to hold all the indices: 0 to number_of_lines
-    std::vector<int> line_indices(25);
+    std::vector<int> line_indices(number_of_lines);
     std::iota(begin(line_indices), end(line_indices), 0); // init line_indices
 
     std::random_device r;
@@ -57,12 +57,13 @@ std::array<Word, 25> Word::random_words(const std::string& seed_str, int plr_sta
     std::ifstream file("dico");
 
     int line_number = 0;
+    int i_colors = 0;
     while (std::getline(file, line))
     {
         for (int j = 0; j < 25; j++)
         {
             if (line_number == line_indices[j])
-                ret.at(j) = Word(line, colors[line_number]);
+                ret.at(j) = Word(line, colors[i_colors++]);
         }
         ++line_number;
     }
