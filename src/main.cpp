@@ -13,7 +13,7 @@ input:
     getline(std::cin, temp);
 
 
-    int ret = -1;
+    int ret;
     try
     {
         ret = std::stoi(temp);
