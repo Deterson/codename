@@ -22,8 +22,7 @@ namespace print
                     return "\033[1;40m\033[;97m" + str + "\033[0m";
             }
         }
-        else
-            return str;
+        return str;
     }
 
 
@@ -41,6 +40,7 @@ namespace print
             case Color::BLACK:
                 return "\033[;30m\033[;40m" + word + "\033[0m";
         }
+        return "oups";
     }
 
     std::string print_centered(const Word& word, int padding, bool colors)

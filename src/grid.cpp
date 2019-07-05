@@ -50,7 +50,7 @@ namespace grid
             }
 
             std::cout << "|" << std::endl;
-            for (int i = 0; i < WIDTH * (padding + 1) + 1; i++)
+            for (int j = 0; j < WIDTH * (padding + 1) + 1; j++)
                 std::cout << "-";
             std::cout << std::endl;
         }
