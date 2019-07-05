@@ -57,6 +57,7 @@ int main()
 
     Game game = Game(plr);
 
+    game.getGrid().print();
     int winner = game.loop(plr);
 
     print_winner(game, winner);

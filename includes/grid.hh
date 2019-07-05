@@ -21,5 +21,7 @@ namespace grid
         const std::array<Word, 25> &getWords() const;
 
         int count(Color c);
+
+        void print(bool colors = false);
     };
 }

@@ -1,3 +1,5 @@
+#include <iomanip>
+#include <iostream>
 #include "grid.hh"
 
 namespace grid
@@ -27,5 +29,17 @@ namespace grid
                 ret++;
         }
         return ret;
+    }
+
+    void Grid::print(bool colors)
+    {
+        for (int i = 0; i < WIDTH; i++)
+        {
+            for (int j = WIDTH - 1; j >= 0; j--)
+            {
+                std::cout << std::setw (10) << get(i, j).getWord() << "  ";
+            }
+            std::cout << std::endl;
+        }
     }
 }
