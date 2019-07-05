@@ -40,24 +40,34 @@ namespace print
             case Color::BLACK:
                 return "\033[;30m\033[;40m" + word + "\033[0m";
         }
-        return "oups";
+        return "oups"; // untriggers -Werror
+    }
+
+    int accent_length(const std::string& str)
+    {
+        int ret = str.length();
+        ret -= std::count(str.begin(), str.end(), '\303');
+
+
+        return ret;
     }
 
     std::string print_centered(const Word& word, int padding, bool colors)
     {
-        const std::string& str = word.getWord();
         std::string ret;
-        int len = str.length();
+
+        std::string pads = " ";
+        int len = accent_length(word.getWord());
 
         for (int i = 0; i < (padding - len) / 2; i++)
-            ret.append(" ");
+            ret.append(pads);
         if ((len - padding) % 2 != 0)
-            ret.append(" ");
+            ret.append(pads);
 
         ret.append(print_word(word, colors));
 
         for (int i = 0; i < (padding - len) / 2; i++)
-            ret.append(" ");
+            ret.append(pads);
         return ret;
     }
 }
