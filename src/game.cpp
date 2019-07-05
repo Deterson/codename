@@ -1,7 +1,7 @@
 #include "game.hh"
 
 Game::Game(std::array<std::string, 4> players, int plr, const std::string& seed_str, int plr_start)
-: grid_(grid::Grid(seed_str))
+: grid_(grid::Grid(seed_str, plr_start))
 {
     assert(plr >= 1 && plr <= 4);
     players_ = {std::move(players[0]), std::move(players[1]), std::move(players[2]), std::move(players[3])};

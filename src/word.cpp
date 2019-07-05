@@ -16,7 +16,7 @@ Word::Word()
 }
 
 
-std::array<Word, 25> Word::random_words(const std::string& seed_str)
+std::array<Word, 25> Word::random_words(const std::string& seed_str, int plr_start)
 {
     std::array<Word, 25> ret;
     int number_of_lines = line_count("dico");
@@ -42,7 +42,7 @@ std::array<Word, 25> Word::random_words(const std::string& seed_str)
 
     std::array<Color, 25> colors{};
     int i = 0;
-    for (; i < N_WORDS + 1; i++)
+    for (; i < N_WORDS + (plr_start == 1); i++)
         colors.at(i) = Color::BLUE;
     for (; i < N_WORDS * 2 + 1; i++)
         colors.at(i) = Color::RED;

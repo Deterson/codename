@@ -78,7 +78,7 @@ int main()
 
     Game game = Game(plr, seed_str, plr_start);
 
-    std::cout << "C'est à l'équipe " << (plr_start == 1 ? "BLEUE" : "ROUGE") << " de commencer!";
+    std::cout << "C'est à l'équipe " << (plr_start == 1 ? "BLEUE" : "ROUGE") << " de commencer!" << std::endl;
 
     int winner = game.loop();
 
