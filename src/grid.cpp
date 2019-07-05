@@ -5,9 +5,9 @@
 
 namespace grid
 {
-    Grid::Grid()
+    Grid::Grid(const std::string& seed_str)
     {
-        this->words_ = Word::random_words();
+        this->words_ = Word::random_words(seed_str);
     }
 
     Word& Grid::get(int x, int y)
@@ -56,5 +56,9 @@ namespace grid
         }
 
         std::cout << std::endl << std::endl << std::endl;
+    }
+
+    Grid::Grid() : Grid("lol")
+    {
     }
 }

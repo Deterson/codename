@@ -1,6 +1,13 @@
 #include <iostream>
 #include <game.hh>
 
+std::string get_seed()
+{
+    std::string ret;
+    std::cout << "Quelle seed voulez-vous utiliser pour cette partie?" << std::endl;
+    getline(std::cin, ret);
+    return ret;
+}
 
 int get_player_n()
 {
@@ -53,9 +60,10 @@ void print_winner(const Game& game, int winner)
 
 int main()
 {
+    std::string seed_str = get_seed();
     int plr = get_player_n();
 
-    Game game = Game(plr);
+    Game game = Game(plr, seed_str);
 
     int winner = game.loop(plr);
 

@@ -16,7 +16,7 @@ Word::Word()
 }
 
 
-std::array<Word, 25> Word::random_words()
+std::array<Word, 25> Word::random_words(const std::string& seed_str)
 {
     std::array<Word, 25> ret;
     int number_of_lines = line_count("dico");
@@ -26,11 +26,15 @@ std::array<Word, 25> Word::random_words()
     std::vector<int> line_indices(number_of_lines);
     std::iota(begin(line_indices), end(line_indices), 0); // init line_indices
 
-    // C++11 random library (should be preferred over rand()/srand())
     std::random_device r;
-    std::seed_seq seed{r(), r(), r(), r(), r(), r(), r(), r()};
+
+    std::hash<std::string> hasher;
+    auto hashed = hasher(seed_str); //returns std::size_t
+
+    std::seed_seq seed{hashed};
     std::mt19937 eng(seed);
-    std::seed_seq seed2{r(), r(), r(), r(), r(), r(), r(), r()};
+
+    std::seed_seq seed2{hashed};
     std::mt19937 eng2(seed2);
 
     // shuffle the line_indices:

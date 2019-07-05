@@ -28,7 +28,7 @@ public:
 
     void flip();
 
-    static std::array<Word, 25> random_words();
+    static std::array<Word, 25> random_words(const std::string& seed_str);
 };
 
 

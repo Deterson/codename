@@ -14,6 +14,7 @@ namespace grid
     private:
         std::array<Word, 25> words_;
     public:
+        Grid(const std::string& seed_str);
         Grid();
 
         Word& get(int x, int y);

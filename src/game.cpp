@@ -1,14 +1,15 @@
 #include "game.hh"
 
-Game::Game(std::string p1, std::string p2, std::string p3, std::string p4, int player)
+Game::Game(std::string p1, std::string p2, std::string p3, std::string p4, int player, const std::string& seed_str)
 {
     assert(player >= 1 && player <= 4);
     players_ = {std::move(p1), std::move(p2), std::move(p3), std::move(p4)};
-    grid_ = grid::Grid();
+    grid_ = grid::Grid(seed_str);
     this->player_ = player;
 }
 
-Game::Game(int player) : Game("player1", "player2", "player3", "player4", player)
+Game::Game(int player, const std::string& seed_str) :
+Game("player1", "player2", "player3", "player4", player, seed_str)
 {}
 
 int Game::play_word(grid::Position p, Color c) // 0: all good / 1: stop / 2: dead
