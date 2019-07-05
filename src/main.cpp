@@ -1,6 +1,8 @@
 #include <iostream>
 #include <game.hh>
 
+int choose_plr(std::string basicString);
+
 std::string get_seed()
 {
     std::string ret;
@@ -58,16 +60,30 @@ void print_winner(const Game& game, int winner)
               game.getPlayers()[winner + 1] << "." << std::endl;
 }
 
+
+int choose_plr(std::string seed_str)
+{
+    std::hash<std::string> hasher;
+    auto hashed = hasher(seed_str);
+    return (hashed % 2 == 0) * 2 + 1; // 1 ou 3
+}
+
+
 int main()
 {
     std::string seed_str = get_seed();
     int plr = get_player_n();
 
-    Game game = Game(plr, seed_str);
+    int plr_start = choose_plr(seed_str);
 
-    int winner = game.loop(plr);
+    Game game = Game(plr, seed_str, plr_start);
+
+    std::cout << "C'est à l'équipe " << (plr_start == 1 ? "BLEUE" : "ROUGE") << " de commencer!";
+
+    int winner = game.loop();
 
     print_winner(game, winner);
 
     return 0;
 }
+

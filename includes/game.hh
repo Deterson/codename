@@ -18,18 +18,19 @@ class Game
 private:
     std::array<std::string, 4> players_; // players_[0] and players_[1] are together
     grid::Grid grid_;
-    int player_;
+    int plr_;
+    int player_start_;
 
 public:
-    Game(std::string p1, std::string p2, std::string p3, std::string p4, int player, const std::string& seed_str);
-    Game(int player, const std::string& seed_str);
+    Game(std::array<std::string, 4> players, int plr, const std::string& seed_str, int plr_start);
+    Game(int plr, const std::string& seed_str, int plr_start);
 
     grid::Position find_word(const std::string& word);
     int play_word(grid::Position p, Color c);
 
     int finished();
 
-    int loop(int plr);
+    int loop();
 
     grid::Grid &getGrid();
 

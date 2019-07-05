@@ -1,15 +1,16 @@
 #include "game.hh"
 
-Game::Game(std::string p1, std::string p2, std::string p3, std::string p4, int player, const std::string& seed_str)
+Game::Game(std::array<std::string, 4> players, int plr, const std::string& seed_str, int plr_start)
 : grid_(grid::Grid(seed_str))
 {
-    assert(player >= 1 && player <= 4);
-    players_ = {std::move(p1), std::move(p2), std::move(p3), std::move(p4)};
-    this->player_ = player;
+    assert(plr >= 1 && plr <= 4);
+    players_ = {std::move(players[0]), std::move(players[1]), std::move(players[2]), std::move(players[3])};
+    this->player_start_ = plr_start;
+    this->plr_ = plr;
 }
 
-Game::Game(int player, const std::string& seed_str) :
-Game("player1", "player2", "player3", "player4", player, seed_str)
+Game::Game(int plr, const std::string& seed_str, int plr_start) :
+Game({"player1", "player2", "player3", "player4"}, plr, seed_str, plr_start)
 {}
 
 int Game::play_word(grid::Position p, Color c) // 0: all good / 1: stop / 2: dead
@@ -64,25 +65,23 @@ const std::array<std::string, 4> &Game::getPlayers() const
     return players_;
 }
 
-int Game::loop(int plr)
+int Game::loop()
 {
     std::string temp;
     int curplr = 1;
 
     while (finished() == 0)
     {
-        getGrid().print(plr == 2 || plr == 4);
-
         std::cout << "C'est à " << getPlayers().at(curplr - 1) << " de jouer\n" << std::endl;
 
         int res = 0;
 
-        if (curplr == plr && is_espion(plr))
-            res = play::espion(*this, player_color(plr));
-        else if (same_team(curplr, plr) && is_maitre_espion(plr))
-            res = play::maitre_espion(*this, player_color(plr));
+        if (curplr == plr_ && is_espion(plr_))
+            res = play::espion(*this, player_color(plr_));
+        else if (same_team(curplr, plr_) && is_maitre_espion(plr_))
+            res = play::maitre_espion(*this, player_color(plr_));
         else
-            res = play::other_team(*this, player_color(plr), curplr, is_maitre_espion(plr));
+            res = play::other_team(*this, player_color(plr_), curplr, is_maitre_espion(plr_));
 
         if (res != 0)
             return res; // 1 si bleu, -1 si rouge
