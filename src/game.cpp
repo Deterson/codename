@@ -75,25 +75,18 @@ int Game::loop(int plr)
         std::cout << "C'est à " << getPlayers().at(curplr - 1) << " de jouer\n" << std::endl;
 
         int res = 0;
-        if (plr == curplr)
-            res = play::espion(*this, player_color(curplr));
-        else if (plr == other_team(curplr))
-            res = play::maitre_espion(*this, player_color(curplr));
+
+        if (curplr == plr && is_espion(plr))
+            res = play::espion(*this, player_color(plr));
+        else if (curplr == plr && is_maitre_espion(plr))
+            res = play::maitre_espion(*this, player_color(plr));
         else
-            res = play::other_team(*this, player_color(curplr));
+            res = play::other_team(*this, player_color(plr), curplr);
 
         if (res != 0)
             return res; // 1 si bleu, -1 si rouge
 
-        switch(curplr) // NOLINT(hicpp-multiway-paths-covered)
-        {
-            case 1:
-                curplr = 3;
-                break;
-            case 3:
-                curplr = 1;
-                break;
-        }
+        curplr = 4 - curplr; // change current player
     }
 
     return 1;

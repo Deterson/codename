@@ -11,7 +11,7 @@ namespace play
 {
     int espion(Game &game, Color c);
     int maitre_espion(Game &game, Color c);
-    int other_team(Game& game, Color c);
+    int other_team(Game &game, Color c, int curplr);
 
     int guess_words(Game& game, Color c, int to_find = std::numeric_limits<int>::max());
 }

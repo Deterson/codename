@@ -91,13 +91,14 @@ input2:
         return 0;
     }
 
-    int other_team(Game& game, Color c)
+    int other_team(Game &game, Color c, int curplr)
     {
-        std::cout << "Quels sont les mots que l'équipe adverse a devinés? Ecrivez-les dans l'ordre ";
+        std::string other = game.getPlayers()[curplr - 1];
+        std::cout << "Quels sont les mots que " + other + " a devinés? Ecrivez-les dans l'ordre ";
         std::cout << "et appuyez sur Entrée après chaque entrée." << std::endl;
         std::cout << "L'équipe adverse doit deviner au moins 1 mot" << std::endl;
 
-        int ret = guess_words(game, c);
+        int ret = guess_words(game, other_team(c));
         return ret;
     }
 
