@@ -7,7 +7,7 @@ int get_player_n()
 input:
     std::string temp;
     std::cout << "Quel est ton numéro de joueur?" <<
-              " (1 et 2, bleus, jouent contre 3 et 4, rouge)" <<
+              "\n1 (espion) et 2 (maître-espion), bleus, jouent contre 3 (espion) et 4 (maître-espion), rouge" <<
               std::endl;
 
     getline(std::cin, temp);
@@ -57,7 +57,6 @@ int main()
 
     Game game = Game(plr);
 
-    game.getGrid().print();
     int winner = game.loop(plr);
 
     print_winner(game, winner);

@@ -70,6 +70,8 @@ int Game::loop(int plr)
 
     while (finished() == 0)
     {
+        getGrid().print(plr == 2 || plr == 4);
+
         std::cout << "C'est à " << getPlayers().at(curplr - 1) << " de jouer\n" << std::endl;
 
         int res = 0;
@@ -88,13 +90,7 @@ int Game::loop(int plr)
             case 1:
                 curplr = 3;
                 break;
-            case 2:
-                curplr = 4;
-                break;
             case 3:
-                curplr = 2;
-                break;
-            case 4:
                 curplr = 1;
                 break;
         }
