@@ -83,7 +83,7 @@ int Game::loop(int plr)
         if (res != 0)
             return res; // 1 si bleu, -1 si rouge
 
-        switch(curplr)
+        switch(curplr) // NOLINT(hicpp-multiway-paths-covered)
         {
             case 1:
                 curplr = 3;
