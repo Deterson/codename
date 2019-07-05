@@ -1,5 +1,5 @@
 #include "word.hh"
-#include "grid.hh"
+
 
 Word::Word(std::string word, Color color)
 {

@@ -10,7 +10,6 @@
 #include <vector>
 
 #include "color.hh"
-#include "tools.hh"
 
 class Word
 {
@@ -31,3 +30,6 @@ public:
 
     static std::array<Word, 25> random_words();
 };
+
+
+#include "tools.hh" //mdr wtf

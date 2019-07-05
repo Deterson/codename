@@ -1,7 +1,6 @@
 #pragma once
 
 #include <array>
-#include "word.hh"
 #include "color.hh"
 #include "word.hh"
 
