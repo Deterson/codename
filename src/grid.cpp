@@ -46,7 +46,7 @@ namespace grid
         {
             for (int j = WIDTH - 1; j >= 0; j--)
             {
-                std::cout << "|" << print::print_centered(get(i, j), padding);
+                std::cout << "|" << print::print_centered(get(i, j), padding, colors);
             }
 
             std::cout << "|" << std::endl;
